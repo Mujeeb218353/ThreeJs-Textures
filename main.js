@@ -1,14 +1,12 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import * as lil from 'lil-gui';
 
-// Scene setup
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+const scene =  new THREE.Scene();
+const camera =  new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
 camera.position.set(0, 0, 5);
 
-// Lighting
-const highIntensityLight = new THREE.DirectionalLight("white", 2);
+const highIntensityLight =  new THREE.DirectionalLight("white", 2);
 highIntensityLight.position.set(10, 20, 15);
 scene.add(highIntensityLight);
 
@@ -16,28 +14,32 @@ const directionalLight = new THREE.DirectionalLight("white", 1);
 directionalLight.position.set(5, 10, 8);
 scene.add(directionalLight);
 
-const ambientLight = new THREE.AmbientLight("white", 0.5);
+const ambientLight = new THREE.AmbientLight("white", .5);
 scene.add(ambientLight);
 
 const pointLight = new THREE.PointLight("white", 1, 100, 2);
-pointLight.position.set(5, 5, 5);
+pointLight.position.set(1, 1, 1);
 scene.add(pointLight);
 
-// Renderer setup
 const canvas = document.getElementById('canvas');
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+
+const renderer = new THREE.WebGLRenderer({
+  canvas, 
+  antialias: true
+});
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// Geometry and Material
 const geometry = new THREE.BoxGeometry(3, 1.8, 2, 100, 100);
 
 let loader = new THREE.TextureLoader();
-let color = loader.load("ThreeJs-Textures/text/paper_0025_color_1k.jpg", () => console.log("Color texture loaded"));
-let roughness = loader.load("ThreeJs-Textures/text/paper_0025_roughness_1k.jpg", () => console.log("Roughness texture loaded"));
-let normal = loader.load("ThreeJs-Textures/text/paper_0025_normal_opengl_1k.png", () => console.log("Normal texture loaded"));
-let height = loader.load("ThreeJs-Textures/text/paper_0025_height_1k.png", () => console.log("Height texture loaded"));
+let color = loader.load("text/paper_0025_color_1k.jpg");
+let roughness = loader.load("text/paper_0025_roughness_1k.jpg");
+let normal = loader.load("text/paper_0025_normal_opengl_1k.png");
+let height = loader.load("text/paper_0025_height_1k.png");
 
-const material = new THREE.MeshStandardMaterial({
+
+
+const material = new THREE.MeshStandardMaterial({ 
   color: "green",
   side: THREE.DoubleSide,
   map: color,
@@ -48,22 +50,22 @@ const material = new THREE.MeshStandardMaterial({
 });
 
 const cube = new THREE.Mesh(geometry, material);
+
 scene.add(cube);
 
-// Orbit Controls
+
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.25;
 controls.enableZoom = true;
 
-// Window resize handler
 window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
 });
 
-// GUI setup
+
 const gui = new lil.GUI();
 
 // Material settings
@@ -94,7 +96,6 @@ lightFolder.add(pointLight.position, 'x', -5, 5).name('Light Position X');
 lightFolder.add(pointLight.position, 'y', -5, 5).name('Light Position Y');
 lightFolder.add(pointLight.position, 'z', -5, 5).name('Light Position Z');
 
-// Animation loop
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
