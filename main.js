@@ -35,7 +35,7 @@ let loader = new THREE.TextureLoader();
 let color = loader.load("ThreeJs-Textures/text/paper_0025_color_1k.jpg");
 let roughness = loader.load("ThreeJs-Textures/text/paper_0025_roughness_1k.jpg");
 let normal = loader.load("/ThreeJs-Textures/text/paper_0025_normal_opengl_1k.png");
-// let height = loader.load("/ThreeJs-Textures/text/paper_0025_height_1k.png");
+let height = loader.load("/ThreeJs-Textures/text/paper_0025_height_1k.png");
 
 
 
