@@ -40,12 +40,13 @@ let normal = loader.load("/ThreeJs-Textures/text/paper_0025_normal_opengl_1k.png
 
 
 const material = new THREE.MeshStandardMaterial({ 
+  color: "green",
   side: THREE.DoubleSide,
   map: color,
   roughnessMap: roughness,
   normalMap: normal,
-  // displacementMap: height,
-  // displacementScale: 0.01,
+  displacementMap: height,
+  displacementScale: 0.01,
 });
 
 const cube = new THREE.Mesh(geometry, material);
