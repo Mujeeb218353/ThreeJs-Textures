@@ -39,8 +39,9 @@ let height = loader.load("https://mujeeb218353.github.io/ThreeJs-Textures/text/p
 
 
 
+
 const material = new THREE.MeshStandardMaterial({ 
-  // color: "green",
+  color: "green",
   side: THREE.DoubleSide,
   map: color,
   roughnessMap: roughness,
