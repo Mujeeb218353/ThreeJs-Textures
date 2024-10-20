@@ -98,8 +98,8 @@ lightFolder.add(pointLight.position, 'z', -5, 5).name('Light Position Z');
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
-  // cube.rotation.x += 0.01;
-  // cube.rotation.y += 0.01;
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
   controls.update();
 }
 
