@@ -32,13 +32,10 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 const geometry = new THREE.BoxGeometry(3, 1.8, 2, 100, 100);
 
 let loader = new THREE.TextureLoader();
-let color = loader.load("https://raw.githubusercontent.com/Mujeeb218353/ThreeJs-Textures/main/text/paper_0025_color_1k.jpg");
-let roughness = loader.load("https://raw.githubusercontent.com/Mujeeb218353/ThreeJs-Textures/main/text/paper_0025_roughness_1k.jpg");
-
-let normal = loader.load("https://raw.githubusercontent.com/Mujeeb218353/ThreeJs-Textures/main/text/paper_0025_normal_opengl_1k.png");
-
-let height = loader.load("https://raw.githubusercontent.com/Mujeeb218353/ThreeJs-Textures/main/text/paper_0025_height_1k.png");
-
+let color = loader.load("./text/paper_0025_color_1k.jpg");
+let roughness = loader.load("./text/paper_0025_roughness_1k.jpg");
+let normal = loader.load("./text/paper_0025_normal_opengl_1k.png");
+let height = loader.load("./text/paper_0025_height_1k.png");
 
 
 
